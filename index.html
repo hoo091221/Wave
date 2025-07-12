@@ -38,12 +38,12 @@
                 <span class="label-text">간섭 보기</span>
             </div>
             <div class="control">
-                <label class="label1">φ<br>(위상차: 얼마나 앞서나가있는지)</label>
-                <input class="input1" type="number" id="phi1" value="0" step="0.1">
+                <label class="label1">φ<br>(위상: 얼마나 앞서나가있는지)</label>
+                <input class="input1" type="number" id="phi1" value="0" step="0.1">𝝿
             </div>
             <div class="control">
-                <label class="label2">φ<br>(위상차: 얼마나 앞서나가있는지)</label>
-                <input class="input2" type="number" id="phi2" value="1" step="0.1">
+                <label class="label2">φ<br>(위상: 얼마나 앞서나가있는지)</label>
+                <input class="input2" type="number" id="phi2" value="1" step="0.1">𝝿
             </div>
         </div>
         </div>
@@ -58,11 +58,11 @@
         let t = 0; // 시간
 
         function draw() {
-            const A = parseFloat(document.getElementById("A").value);
-            const k = parseFloat(document.getElementById("k").value);
-            const omega = parseFloat(document.getElementById("omega").value);
-            const phi1 = parseFloat(document.getElementById("phi1").value) * Math.PI;
-            const phi2 = parseFloat(document.getElementById("phi2").value) * Math.PI;
+            const A = parseFloat(document.getElementById("A").value); // 진폭
+            const k = parseFloat(document.getElementById("k").value); // 파수
+            const omega = parseFloat(document.getElementById("omega").value); // 각속도
+            const phi1 = parseFloat(document.getElementById("phi1").value) * Math.PI; // 위상차1
+            const phi2 = parseFloat(document.getElementById("phi2").value) * Math.PI; //위상차2
 
             ctx.clearRect(0, 0, width, height);
 
@@ -71,7 +71,7 @@
             ctx.lineWidth = 1.5;
             ctx.beginPath();
             for (let x = 0; x < width; x++) {
-                const y1 = height / 2 + A * Math.sin(k * x - omega * t + phi1);
+                const y1 = height / 2 + A * Math.sin(k * x - omega * t + phi1); // Asin(kx - wt + phi) 공식
                 if (x === 0) ctx.moveTo(x, y1);
                 else ctx.lineTo(x, y1);
             }
